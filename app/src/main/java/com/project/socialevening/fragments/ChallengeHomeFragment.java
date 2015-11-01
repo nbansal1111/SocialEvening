@@ -25,6 +25,15 @@ public class ChallengeHomeFragment extends BaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        int sent = ParseUser.getCurrentUser().getInt(AppConstants.PARAMS.CHALLENGES_SENT);
+        sentChallenges.setText(sent + "");
+        int rec = Preferences.getData(AppConstants.PREF_KEYS.CHALLENGE_COUNT, 0);
+        recChallenges.setText(rec + "");
+    }
+
+    @Override
     public int getViewID() {
         return R.layout.fragment_challenges;
     }

@@ -7,10 +7,13 @@ import android.widget.TextView;
 
 import com.parse.ParseFile;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 import com.project.socialevening.R;
 import com.project.socialevening.activity.FragmentContainer;
 import com.project.socialevening.utility.AppConstants;
 import com.project.socialevening.utility.Util;
+
+import java.util.List;
 
 /**
  * Created by nitin on 31/10/15.
@@ -39,6 +42,14 @@ public class MyTeamHolder extends BaseRecycleHolder {
                 Util.loadImage(ctx, url, teamImage, 0);
             }
             teamName.setText(teamObject.getString(AppConstants.PARAMS.TEAM_NAME) + "");
+            List<ParseUser> list = teamObject.getList(AppConstants.PARAMS.MEMBERS);
+            int count = 0;
+            if (list != null) {
+                count = list.size();
+            }
+            teamMembers.setText(count + "");
+            count = teamObject.getInt(AppConstants.PARAMS.CHALLENGE_COUNT);
+            challengeCount.setText(count + "");
         }
     }
 

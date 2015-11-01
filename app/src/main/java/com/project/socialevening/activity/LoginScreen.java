@@ -2,12 +2,14 @@ package com.project.socialevening.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -39,7 +41,7 @@ public class LoginScreen extends BaseActivity {
     private String gender;
     private ImageView male, female;
     private int genderType;
-
+    private LinearLayout layout;
     private CallbackManager callbackManager;
 
 
@@ -47,6 +49,7 @@ public class LoginScreen extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_login);
+        layout = (LinearLayout) findViewById(R.id.parentView);
 
         if (Preferences.getData(Preferences.LOGIN_KEY, false)) {
             startNextActivity(HomeActivity.class);
@@ -157,16 +160,18 @@ public class LoginScreen extends BaseActivity {
         user.put("gender", gender);
 
 // other fields can be set just like with ParseObject
-
+        showProgressDialog();
         user.signUpInBackground(new SignUpCallback() {
             @Override
             public void done(com.parse.ParseException e) {
+                hideProgressBar();
                 if (e == null) {
                     // Hooray! Let them use the app now.
                     Preferences.saveData(Preferences.LOGIN_KEY, true);
                     startNextActivity(HomeActivity.class);
+                    finish();
                 } else {
-                    showToast(e.getMessage());
+                    showSnackBar(e.getMessage());
                     e.printStackTrace();
                     // Sign up didn't succeed. Look at the ParseException
                     // to figure out what went wrong
@@ -174,6 +179,18 @@ public class LoginScreen extends BaseActivity {
             }
 
         });
+    }
+
+    private void showSnackBar(String msg) {
+        Snackbar snackbar = Snackbar
+                .make(layout, msg, Snackbar.LENGTH_LONG)
+                .setAction("DISMISS", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    }
+                });
+
+        snackbar.show();
     }
 
 

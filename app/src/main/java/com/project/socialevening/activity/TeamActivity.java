@@ -209,7 +209,8 @@ public class TeamActivity extends BaseActivity {
 
     private void sendChallenge(String challengeName) {
         if (teamObject != null) {
-            teamObject.increment(AppConstants.PARAMS.CHALLENGE_COUNT, 1);
+            teamObject.increment(AppConstants.PARAMS.CHALLENGE_COUNT);
+            teamObject.saveInBackground();
             String teamId = teamObject.getObjectId();
             JSONObject obj = new JSONObject();
 

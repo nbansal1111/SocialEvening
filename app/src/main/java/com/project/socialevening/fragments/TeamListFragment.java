@@ -76,6 +76,7 @@ public class TeamListFragment extends BaseFragment {
                 myTeams.clear();
                 myTeams.addAll(objects);
                 if (myTeams.size() > 0) {
+                    hideVisibility(R.id.frame_no_teams);
                     adapter.notifyDataSetChanged();
                 } else {
                     showEmptyView();
@@ -86,6 +87,7 @@ public class TeamListFragment extends BaseFragment {
 
     private void showEmptyView() {
         findView(R.id.frame_no_teams).setVisibility(View.VISIBLE);
+        setText(R.id.tv_no_team, getString(R.string.no_team_created));
     }
 
     @Override
