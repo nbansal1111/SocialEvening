@@ -8,6 +8,7 @@ import android.provider.ContactsContract;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -220,7 +221,9 @@ public class AddTeamMateFragment extends BaseFragment implements LoaderManager.L
                 getActivity().finish();
                 break;
             case R.id.btn_send_invite:
+                Log.d(TAG, "Trying to send sms" + selectedContacts.size());
                 SMSUtil util = new SMSUtil(getActivity());
+
                 for (PhoneContact c : selectedContacts) {
                     util.sendSMS(c.contactNumber, getAppLink());
                 }

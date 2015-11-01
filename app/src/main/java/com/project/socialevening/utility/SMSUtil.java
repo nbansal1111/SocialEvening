@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -24,7 +25,7 @@ public class SMSUtil {
     public void sendSMS(final String phoneNumber, final String message) {
         String SENT = "SMS_SENT";
         String DELIVERED = "SMS_DELIVERED";
-
+        Log.d("SMS", phoneNumber + "," + message);
         PendingIntent sentPI = PendingIntent.getBroadcast(ctx, 0, new Intent(
                 SENT), 0);
 

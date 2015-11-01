@@ -5,9 +5,12 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.TextView;
 
+import com.parse.LogOutCallback;
+import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.project.socialevening.R;
 import com.project.socialevening.activity.HomeActivity;
+import com.project.socialevening.activity.LoginScreen;
 import com.project.socialevening.utility.AppConstants;
 import com.project.socialevening.utility.Preferences;
 import com.project.socialevening.utility.Util;
@@ -31,7 +34,7 @@ public class DrawerFragment extends BaseFragment {
                 act.closeDrawer();
             }
         });
-        setOnClickListener(R.id.ll_home, R.id.ll_teams, R.id.rl_spread);
+        setOnClickListener(R.id.ll_home, R.id.ll_teams, R.id.rl_spread, R.id.ll_log_out);
 
     }
 
@@ -49,10 +52,29 @@ public class DrawerFragment extends BaseFragment {
             case R.id.rl_spread:
                 shareApp();
                 break;
+            case R.id.ll_log_out:
+                logOut();
+                break;
 
             default:
                 break;
         }
+    }
+
+    private void logOut() {
+        showToast("Logging you out");
+        ParseUser.getCurrentUser().logOutInBackground(new LogOutCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Preferences.saveData(Preferences.LOGIN_KEY, false);
+                    getActivity().startActivity(new Intent(act, LoginScreen.class));
+                    getActivity().finish();
+                } else {
+
+                }
+            }
+        });
     }
 
     final String appPackageName = "com.project.socialevening";

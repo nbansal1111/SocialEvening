@@ -59,6 +59,20 @@
                     android:text="@string/your_teams" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/ll_log_out"
+
+                style="@style/ll_drawer_item">
+
+                <ImageView
+                    style="@style/iv_drawer_item"
+                    android:src="@drawable/orders_nav" />
+
+                <com.project.socialevening.widgets.CustomFontTextView
+                    style="@style/tv_drawer_item"
+                    android:text="@string/log_out" />
+            </LinearLayout>
+
 
             <View
                 style="@style/view_match_1"

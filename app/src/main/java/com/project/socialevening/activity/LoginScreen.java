@@ -124,7 +124,7 @@ public class LoginScreen extends BaseActivity {
                     showToast("Please enter a password");
                     return;
                 }
-                loginUser(name, email, password, gender);
+                loginUser(name, email, password, gender, false);
                 break;
             case R.id.radio_female:
                 if (genderType == 2) {
@@ -152,7 +152,7 @@ public class LoginScreen extends BaseActivity {
         }
     }
 
-    private void loginUser(final String name, final String email, final String password, final String gender) {
+    private void loginUser(final String name, final String email, final String password, final String gender, final boolean isLogin) {
         ParseUser user = new ParseUser();
         user.setUsername(name);
         user.setPassword(password);
@@ -160,26 +160,50 @@ public class LoginScreen extends BaseActivity {
         user.put("gender", gender);
 
 // other fields can be set just like with ParseObject
-        showProgressDialog();
-        user.signUpInBackground(new SignUpCallback() {
-            @Override
-            public void done(com.parse.ParseException e) {
-                hideProgressBar();
-                if (e == null) {
-                    // Hooray! Let them use the app now.
-                    Util.saveAppLink();
-                    Preferences.saveData(Preferences.LOGIN_KEY, true);
-                    startNextActivity(HomeActivity.class);
-                    finish();
-                } else {
-                    showSnackBar(e.getMessage());
-                    e.printStackTrace();
-                    // Sign up didn't succeed. Look at the ParseException
-                    // to figure out what went wrong
-                }
-            }
 
-        });
+        showProgressDialog();
+        if (!isLogin) {
+            user.signUpInBackground(new SignUpCallback() {
+                @Override
+                public void done(com.parse.ParseException e) {
+                    hideProgressBar();
+                    if (e == null) {
+                        // Hooray! Let them use the app now.
+                        Util.saveAppLink();
+                        Preferences.saveData(Preferences.LOGIN_KEY, true);
+                        startNextActivity(HomeActivity.class);
+                        finish();
+                    } else {
+                        showSnackBar(e.getMessage());
+                        String msg = e.getMessage();
+                        if (msg.contains("already")) {
+                            loginUser(name, email, password, gender, true);
+                        }
+
+                        e.printStackTrace();
+
+                        // Sign up didn't succeed. Look at the ParseException
+                        // to figure out what went wrong
+                    }
+                }
+
+            });
+        }else{
+            user.logInInBackground(name, password, new LogInCallback() {
+                @Override
+                public void done(ParseUser user, ParseException e) {
+                    hideProgressBar();
+                    if(e == null){
+                        // Successfully logged in
+                        startNextActivity(HomeActivity.class);
+                        finish();
+                    }else{
+                        //
+                        showSnackBar(e.getMessage());
+                    }
+                }
+            });
+        }
     }
 
     private void showSnackBar(String msg) {
@@ -249,7 +273,7 @@ public class LoginScreen extends BaseActivity {
         String name = Preferences.getData("name", "");
         String email = Preferences.getData("email", "");
         String gender = Preferences.getData("gender", "");
-        loginUser(name, email, gender, password);
+        loginUser(name, email, gender, password, false);
     }
 
 
