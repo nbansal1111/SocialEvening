@@ -84,10 +84,6 @@ public class DrawerFragment extends BaseFragment {
         Intent i = new Intent(android.content.Intent.ACTION_SEND);
         i.setType("text/plain");
         i.putExtra(android.content.Intent.EXTRA_TEXT, "Download Social Evening app -- " + Preferences.getAppLink());
-//        Intent intent = new Intent(Intent.ACTION_VIEW);
-//        intent.setData(Uri
-//                .parse("https://play.google.com/store/apps/developer?id="
-//                        + appPackageName));
         startActivity(i);
     }
 

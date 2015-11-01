@@ -327,9 +327,7 @@ public class AddTeamMateFragment extends BaseFragment implements LoaderManager.L
 
     private String getAppLink() {
         StringBuilder builder = new StringBuilder();
-        builder.append(ParseUser.getCurrentUser().getUsername() + " has invited you to join his team " + teamObject.get(AppConstants.PARAMS.TEAM_NAME) + " on Social Evening");
-        builder.append("\n");
-        builder.append("Download app from " + Preferences.getAppLink());
+        builder.append("Download app -- " + Preferences.getAppLink());
         return builder.toString();
     }
 
