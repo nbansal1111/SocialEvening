@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="fab_bg">#28AEC7</color>
+    <color name="color_view_bg_grey">#D5D5D5</color>
+    <color name="light_gray">#e5e5e5</color>
+    <color name="color_desc">#999999</color>
+    <color name="bg_gray">#D5D5D5</color>
+
+</resources>

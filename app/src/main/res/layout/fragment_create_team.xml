@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        style="@style/toolbar"
+        android:background="@color/color_discvr_done"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+
+            <FrameLayout
+                android:id="@+id/frame_noInternet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:fitsSystemWindows="true"
+                android:visibility="gone">
+
+                <include layout="@layout/layout_no_internet" />
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/iv_selfie"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ht_selfie"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/rect_bg_selfie"
+                android:padding="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/selfie" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fab"
+                style="@style/fab_add_team"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/camera" />
+
+            <com.project.socialevening.widgets.CustomFontEditText
+                android:id="@+id/et_teamName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/hint_team_name"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:visibility="gone" />
+
+            <com.project.socialevening.widgets.CustomFontButton
+                android:id="@+id/btn_createTeam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/color_discvr_done"
+                android:text="@string/create_team"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

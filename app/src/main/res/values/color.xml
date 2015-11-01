@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primarycolor">@color/fab_bg</color>
+    <color name="white">#ffffff</color>
+    <color name="window_background">#FFF5F5F5</color>
+    <color name="tab_background">#887E7169</color>
+    <color name="color_red_bg">#F44336</color>
+    <color name="color_blue_bg">#2196F3</color>
+    <color name="color_green_bg">#8BC34A</color>
+    <color name="color_magento_bg">#E91E63</color>
+    <!--<color name="color_purple_bg">#9C27B0</color>-->
+    <color name="color_darkyellow_bg">#FF9800</color>
+    <color name="color_lightgreen_bg">#CDDC39</color>
+    <color name="color_darkpurple_bg">#673AB7</color>
+    <color name="color_view_sep_bg">#545454</color>
+    <color name="color_discvr_red">#D13D50</color>
+    <color name="color_discvr_done">#D13D50</color>
+    <color name="color_text_grey">#636060</color>
+    <color name="color_border_grey">#BEBEBE</color>
+    <color name="color_label_address_grey">#404040</color>
+    <color name="color_text_desc">#727272</color>
+    <color name="color_purple_bg">#660091</color>
+    <color name="color_skip_inv_bg">#BEBEBE</color>
+    <color name="color_primary_dark">#741021</color>
+    <color name="alpha_bg_team_card">#66727272</color>
+
+
+</resources>

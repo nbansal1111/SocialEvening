@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_team_image">
+
+        <ImageView
+            android:id="@+id/iv_team_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_team_image"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/selfie" />
+
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_team_name"
+            style="@style/tv_team_name"
+            android:layout_gravity="bottom|left"
+            android:layout_marginRight="50dp"
+            android:paddingLeft="16dp"
+            android:ellipsize="end"
+            android:paddingRight="5dp"
+            android:singleLine="true" />
+
+        <LinearLayout
+            android:id="@+id/ll_meta_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:orientation="vertical"
+            android:paddingBottom="8dp"
+            android:paddingRight="16dp">
+
+            <com.project.socialevening.widgets.CustomFontTextView
+                android:id="@+id/tv_members_count"
+                style="@style/tv_card_count"
+                android:drawableLeft="@drawable/ic_member_red"
+                android:drawablePadding="5dp" />
+
+            <com.project.socialevening.widgets.CustomFontTextView
+                android:id="@+id/tv_challenge_count"
+                style="@style/tv_card_count"
+                android:drawableLeft="@drawable/ic_challenges"
+                android:drawablePadding="5dp" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_team_image"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/gradient" />
+
+</RelativeLayout>

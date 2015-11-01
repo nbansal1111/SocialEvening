@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp">
+
+    <ImageView
+        android:id="@+id/iv_invitation_checkbox"
+        android:layout_width="@dimen/icon_row_user_segment"
+        android:layout_height="@dimen/icon_row_user_segment"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:padding="6dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_invitation_unselected" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tv_inviteePhone"
+        android:layout_toRightOf="@+id/iv_invitation_checkbox"
+        android:background="@color/light_gray" />
+
+    <com.project.socialevening.widgets.CustomFontTextView
+        android:id="@+id/tv_inviteeName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@+id/iv_invitation_checkbox"
+        android:text="Nitin Bansal"
+        android:textSize="16sp" />
+
+    <com.project.socialevening.widgets.CustomFontTextView
+        android:id="@+id/tv_inviteePhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_inviteeName"
+        android:layout_marginBottom="8dp"
+        android:layout_toRightOf="@+id/iv_invitation_checkbox"
+        android:text="Nitin Bansal"
+        android:textColor="@color/color_desc"
+        android:textSize="14sp" />
+</RelativeLayout>
