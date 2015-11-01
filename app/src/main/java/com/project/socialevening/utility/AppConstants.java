@@ -17,7 +17,9 @@ public interface AppConstants {
     String PARSE_APP_ID = "t5e3EmTY3TxXVEYa2iDSE4cBtSI4UliMlygphyY2";
     String PARSE_CLIENT_ID = "FxXZFSlCCW4UmbIUZljxawZbJSDZRScW9hBa29Kw";
     String PARSE_REST_ID = "sSLcaJLv5gPTvbz73ryCNztPkRgwkxM9Fl8yWGmQ";
-    String APP_LINK = "test message from nitin bansal";
+    String APP_LINK = "https://drive.google.com/file/d/0B8wKJnD6sONHeXlUbm5pOTk4dGM/view?usp=sharing";
+
+    String APP_DOWNLOAD_MESSAGE = "Download social evening to grow your social network. Download it from ";
 
     public static interface PARAMS {
         String TEAM = "TEAM";
@@ -110,6 +112,8 @@ public interface AppConstants {
         String SOCIAL_LOGIN = "socialLogin";
         String SUBMITTED_PROJECT_TIMESTAMP = "submittedProjectTimestamp";
         String CHALLENGE_COUNT = "challengeCount";
+        String APP_LINK = "appLink";
+        String IS_APP_LINK_SAVED = "isAppLinkSaved";
     }
 
     public static interface BUNDLE_KEYS {

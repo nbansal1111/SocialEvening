@@ -162,6 +162,7 @@ public class CreateTeamActivity extends BaseActivity {
                 Bundle b = new Bundle();
                 b.putString(AppConstants.BUNDLE_KEYS.TEAM_ID, team.getObjectId());
                 FragmentContainer.startActivity(this, AppConstants.FRAGMENT_TYPE.ADD_TEAM_MATE, b);
+                finish();
                 break;
             case AppConstants.TASK_CODES.SAVE_PARSE_FILE:
                 ParseFile file = (ParseFile) params[0];

@@ -12,6 +12,7 @@ import com.parse.ParsePush;
 import com.project.socialevening.utility.AppConstants;
 import com.project.socialevening.utility.Logger;
 import com.project.socialevening.utility.Preferences;
+import com.project.socialevening.utility.Util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -30,6 +31,7 @@ public class AppController extends Application {
         Parse.initialize(this, AppConstants.PARSE_APP_ID, AppConstants.PARSE_CLIENT_ID);
         FacebookSdk.sdkInitialize(this);
         printKeyHash();
+        Util.saveAppLink();
     }
 
     public static AppController getInstance() {

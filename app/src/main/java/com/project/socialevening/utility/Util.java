@@ -31,6 +31,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.project.socialevening.activity.CreateTeamActivity;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
@@ -45,6 +49,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.regex.Pattern;
 
@@ -419,11 +424,11 @@ public class Util {
             // set crop properties
             cropIntent.putExtra("crop", "true");
             // indicate aspect of desired crop
-            cropIntent.putExtra("aspectX", 2);
+            cropIntent.putExtra("aspectX", 1);
             cropIntent.putExtra("aspectY", 1);
             // indicate <span id="IL_AD11" class="IL_AD">output</span> X and Y
-            cropIntent.putExtra("outputX", 400);
-            cropIntent.putExtra("outputY", 400);
+            cropIntent.putExtra("outputX", 256);
+            cropIntent.putExtra("outputY", 256);
             // <span id="IL_AD5" class="IL_AD">retrieve data</span> on return
             cropIntent.putExtra("return-data", true);
             // start the activity - we handle returning in onActivityResult
@@ -488,6 +493,26 @@ public class Util {
 
         }
         return null;
+    }
+
+    public static void saveAppLink() {
+        if (!Preferences.getData(AppConstants.PREF_KEYS.IS_APP_LINK_SAVED, false)) {
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("AppLink");
+            query.findInBackground(new FindCallback<ParseObject>() {
+                @Override
+                public void done(List<ParseObject> objects, ParseException e) {
+                    if (e != null) return;
+                    if (objects != null && objects.size() > 0) {
+                        String appLink = objects.get(0).getString(AppConstants.PREF_KEYS.APP_LINK);
+                        if (!TextUtils.isEmpty(appLink)) {
+                            Preferences.saveData(AppConstants.PREF_KEYS.APP_LINK, appLink);
+                            Preferences.saveData(AppConstants.PREF_KEYS.IS_APP_LINK_SAVED, true);
+                        }
+                    }
+                }
+
+            });
+        }
     }
 
 

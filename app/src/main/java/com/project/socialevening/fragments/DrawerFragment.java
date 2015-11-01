@@ -9,6 +9,8 @@ import com.parse.ParseUser;
 import com.project.socialevening.R;
 import com.project.socialevening.activity.HomeActivity;
 import com.project.socialevening.utility.AppConstants;
+import com.project.socialevening.utility.Preferences;
+import com.project.socialevening.utility.Util;
 
 public class DrawerFragment extends BaseFragment {
 
@@ -17,8 +19,10 @@ public class DrawerFragment extends BaseFragment {
 
     @Override
     public void initViews() {
+        Util.saveAppLink();
         act = (HomeActivity) getActivity();
-        location = (TextView) findView(R.id.tv_mobileNumber);
+        location = (TextView) findView(R.id.tv_name);
+        setText(R.id.tv_email, ParseUser.getCurrentUser().getEmail() + "");
         location.setText(ParseUser.getCurrentUser().getUsername());
         location.setOnClickListener(new View.OnClickListener() {
 
@@ -27,7 +31,7 @@ public class DrawerFragment extends BaseFragment {
                 act.closeDrawer();
             }
         });
-        setOnClickListener(R.id.ll_home, R.id.ll_teams);
+        setOnClickListener(R.id.ll_home, R.id.ll_teams, R.id.rl_spread);
 
     }
 
@@ -42,6 +46,10 @@ public class DrawerFragment extends BaseFragment {
                 act.onDrawerItemClicked(AppConstants.FRAGMENT_TYPE.MY_TEAMS);
                 break;
 
+            case R.id.rl_spread:
+                shareApp();
+                break;
+
             default:
                 break;
         }
@@ -50,11 +58,15 @@ public class DrawerFragment extends BaseFragment {
     final String appPackageName = "com.project.socialevening";
 
     private void shareApp() {
-        Intent intent = new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri
-                .parse("https://play.google.com/store/apps/developer?id="
-                        + appPackageName));
-        startActivity(intent);
+
+        Intent i = new Intent(android.content.Intent.ACTION_SEND);
+        i.setType("text/plain");
+        i.putExtra(android.content.Intent.EXTRA_TEXT, "Download Social Evening app -- " + Preferences.getAppLink());
+//        Intent intent = new Intent(Intent.ACTION_VIEW);
+//        intent.setData(Uri
+//                .parse("https://play.google.com/store/apps/developer?id="
+//                        + appPackageName));
+        startActivity(i);
     }
 
     private void launchMarketToRateApp() {

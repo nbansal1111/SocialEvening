@@ -6,10 +6,10 @@
     <string name="hint_team_name">Enter your team name</string>
     <string name="create_team">Create your team now</string>
     <string name="facebook_app_id">551038571720275</string>
-    <string name="hint_email">Enter your email</string>
-    <string name="hint_password">Enter your password</string>
+    <string name="hint_email">Enter your email*</string>
+    <string name="hint_password">Enter your password*</string>
     <string name="sign_in">Login</string>
-    <string name="hint_name">Enter your name</string>
+    <string name="hint_name">Enter your username*</string>
     <string name="spread_world">Spread us to world</string>
     <string name="your_teams">Your Teams</string>
     <string name="home">Home</string>

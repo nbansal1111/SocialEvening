@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.location.Location;
+import android.text.TextUtils;
 
 import com.parse.ParseGeoPoint;
 
@@ -133,6 +134,14 @@ public class Preferences {
         }
         ParseGeoPoint p = new ParseGeoPoint(lat, lng);
         return p;
+    }
+
+    public static String getAppLink() {
+        String link = getData(AppConstants.PREF_KEYS.APP_LINK, null);
+        if (TextUtils.isEmpty(link)) {
+            link = AppConstants.APP_LINK;
+        }
+        return link;
     }
 
 

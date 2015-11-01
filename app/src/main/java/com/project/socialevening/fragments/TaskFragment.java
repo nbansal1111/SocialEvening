@@ -62,7 +62,7 @@ public class TaskFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         // Retain this fragment across configuration changes.
-        setRetainInstance(true);
+//        setRetainInstance(true);
         asyncTaskListener = (AsyncTaskListener) getActivity();
         // Create and execute the background task.
 

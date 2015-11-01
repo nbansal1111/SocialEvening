@@ -167,6 +167,7 @@ public class LoginScreen extends BaseActivity {
                 hideProgressBar();
                 if (e == null) {
                     // Hooray! Let them use the app now.
+                    Util.saveAppLink();
                     Preferences.saveData(Preferences.LOGIN_KEY, true);
                     startNextActivity(HomeActivity.class);
                     finish();

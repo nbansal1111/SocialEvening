@@ -38,6 +38,8 @@ public class HomeActivity extends BaseActivity {
     }
 
 
+
+
     private BaseFragment getFragment(int fragmentType) {
         switch (fragmentType) {
             case AppConstants.FRAGMENT_TYPE.HOME_FRAGMENT:

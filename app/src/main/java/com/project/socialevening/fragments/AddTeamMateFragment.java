@@ -23,12 +23,14 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 import com.project.socialevening.ListAdapters.CustomListAdapter;
 import com.project.socialevening.ListAdapters.CustomListAdapterInterface;
 import com.project.socialevening.R;
 import com.project.socialevening.models.ContactsQuery;
 import com.project.socialevening.utility.AppConstants;
 import com.project.socialevening.utility.Logger;
+import com.project.socialevening.utility.Preferences;
 import com.project.socialevening.utility.SMSUtil;
 import com.project.socialevening.utility.Util;
 
@@ -67,6 +69,7 @@ public class AddTeamMateFragment extends BaseFragment implements LoaderManager.L
 
     @Override
     public void initViews() {
+        Util.saveAppLink();
         listView = (ListView) findView(R.id.listView);
         listView.setOnItemClickListener(this);
         listView.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -103,7 +106,6 @@ public class AddTeamMateFragment extends BaseFragment implements LoaderManager.L
 
     @Override
     public void onPostExecute(Object response, int taskCode, Object... params) {
-        super.onPostExecute(response, taskCode, params);
         switch (taskCode) {
             case AppConstants.TASK_CODES.PARSE_QUERY:
                 List<ParseObject> scoreList = (List<ParseObject>) response;
@@ -220,7 +222,7 @@ public class AddTeamMateFragment extends BaseFragment implements LoaderManager.L
             case R.id.btn_send_invite:
                 SMSUtil util = new SMSUtil(getActivity());
                 for (PhoneContact c : selectedContacts) {
-                    util.sendSMS(c.contactNumber, AppConstants.APP_LINK);
+                    util.sendSMS(c.contactNumber, getAppLink());
                 }
                 showToast(getString(R.string.msg_invitation_success));
                 resetAdapter();
@@ -318,6 +320,14 @@ public class AddTeamMateFragment extends BaseFragment implements LoaderManager.L
         private String contactName;
         private String contactNumber;
         private boolean isSelected;
+    }
+
+    private String getAppLink() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(ParseUser.getCurrentUser().getUsername() + " has invited you to join his team " + teamObject.get(AppConstants.PARAMS.TEAM_NAME) + " on Social Evening");
+        builder.append("\n");
+        builder.append("Download app from " + Preferences.getAppLink());
+        return builder.toString();
     }
 
 

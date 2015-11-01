@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by nitin on 29/10/15.
  */
-public class HomeFragment extends BaseFragment implements CustomPagerAdapter.PagerAdapterInterface<String> {
+public class HomeFragment extends BaseFragment implements CustomPagerAdapter.PagerAdapterInterface<String>, TabLayout.OnTabSelectedListener {
     private ViewPager pager;
     private TabLayout tabLayout;
     private List<String> tabNames = new ArrayList<>();
@@ -33,6 +33,8 @@ public class HomeFragment extends BaseFragment implements CustomPagerAdapter.Pag
         adapter = new CustomPagerAdapter<>(getChildFragmentManager(), tabNames, this);
         pager.setAdapter(adapter);
         tabLayout.setupWithViewPager(pager);
+        pager.setOffscreenPageLimit(3);
+        tabLayout.setOnTabSelectedListener(this);
         setOnClickListener(R.id.fab);
     }
 
@@ -82,5 +84,20 @@ public class HomeFragment extends BaseFragment implements CustomPagerAdapter.Pag
     @Override
     protected int getHomeIcon() {
         return R.drawable.drawer_icon;
+    }
+
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+        pager.setCurrentItem(tab.getPosition(), true);
+    }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
+
     }
 }
