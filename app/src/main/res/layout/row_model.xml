@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:padding="5dp"
+        android:id="@+id/frame_product"
+        android:layout_width="match_parent"
+        android:background="@drawable/rect_bg_model"
+        android:layout_height="@dimen/ht_model_image">
+
+        <ImageView
+            android:id="@+id/iv_modelImage"
+            android:layout_width="match_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/vantage_logo"
+            android:layout_height="@dimen/ht_model_image" />
+
+        <FrameLayout
+            android:id="@+id/frame_overlay_transparent"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ht_model_image"
+            android:background="#66000000"></FrameLayout>
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_modelName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:padding="12dp"
+            android:singleLine="true"
+            android:text="Vantage"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:customFont="@string/font_medium" />
+    </FrameLayout>
+</LinearLayout>

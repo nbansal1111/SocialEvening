@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_productName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/tv_productTotalPrice"
+            android:text="Single Piece seat"
+            android:textColor="@color/color_text_grey"
+            android:textSize="16dp" />
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_productDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_productName"
+            android:layout_toLeftOf="@+id/tv_productTotalPrice"
+            android:text="9 size"
+            android:textColor="@color/color_text_desc"
+            android:textSize="14dp" />
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_productPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_productDesc"
+            android:text="Rs. 2300"
+            android:textColor="@color/color_discvr_done"
+            android:textSize="14dp" />
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_productTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Rs. 2300"
+            android:textColor="@color/color_discvr_done"
+            android:textSize="14dp" />
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_productQty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tv_productTotalPrice"
+            android:layout_marginTop="5dp"
+            android:text="1"
+            android:textColor="@color/color_text_desc"
+            android:textSize="18dp" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

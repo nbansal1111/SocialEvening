@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings.Secure;
+import android.support.design.widget.Snackbar;
 import android.telephony.TelephonyManager;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -35,10 +36,15 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.project.socialevening.activity.CreateTeamActivity;
+import com.project.socialevening.AppController;
+import com.project.socialevening.asyncmanager.UserCartService;
+import com.project.socialevening.exceptionhandler.RestException;
+import com.project.socialevening.models.UserCart;
+import com.project.socialevening.receivers.RefereshReceiver;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -47,6 +53,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -96,6 +103,14 @@ public class Util {
         bmp.compress(Bitmap.CompressFormat.PNG, 80, stream);
         byte[] byteArray = stream.toByteArray();
         return byteArray;
+    }
+
+    public static void showLongToast(int id) {
+        Toast.makeText(AppController.getInstance(), AppController.getInstance().getResources().getString(id), Toast.LENGTH_LONG).show();
+    }
+
+    public static void showLongToast(String text) {
+        Toast.makeText(AppController.getInstance(), text, Toast.LENGTH_LONG).show();
     }
 
     public interface DialogListener {
@@ -273,11 +288,16 @@ public class Util {
     }
 
     public static Date convertDateFormat(Date date, String reqDateFormat,
-                                         String currentDateFormat) throws Exception {
+                                         String currentDateFormat) {
         String formattedDateString = convertDateFormat(date.toString(),
                 currentDateFormat, reqDateFormat);
         SimpleDateFormat format = new SimpleDateFormat(reqDateFormat);
-        return format.parse(formattedDateString);
+        try {
+            return format.parse(formattedDateString);
+        } catch (java.text.ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static void hideKeyboard(Context ctx) {
@@ -515,5 +535,80 @@ public class Util {
         }
     }
 
+    public static void showSnackBar(View layout, String msg) {
+        Snackbar snackbar = Snackbar
+                .make(layout, msg, Snackbar.LENGTH_LONG)
+                .setAction("DISMISS", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    }
+                });
 
+        snackbar.show();
+    }
+
+    public static void setSpannableColor(TextView view, String fulltext, String subtext, int color) {
+        view.setText(fulltext, TextView.BufferType.SPANNABLE);
+        Spannable str = (Spannable) view.getText();
+        int i = fulltext.indexOf(subtext);
+        if (i < 0) {
+            return;
+        }
+        str.setSpan(new ForegroundColorSpan(color), i, i + subtext.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//        view.setText(str);
+    }
+
+    public static void sendCartBroadcast() {
+        final Intent i = new Intent();
+        i.setAction(RefereshReceiver.ACTION_REFRESH);
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                long amount = 0;
+                try {
+                    List<UserCart> carts = (List<UserCart>) new UserCartService().getData(null);
+                    amount = getAmount(carts);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (RestException e) {
+                    e.printStackTrace();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    Logger.info("ParseException", e.getMessage());
+                }
+                i.putExtra(AppConstants.BUNDLE_KEYS.CART_AMOUNT, amount + "");
+                AppController.getInstance().sendBroadcast(i);
+            }
+        }).start();
+    }
+
+
+    public static long getAmount(List<UserCart> cartList) {
+        long orderAmount = 0;
+        Logger.info("Cart List Size", cartList.size() + "");
+        for (UserCart c : cartList) {
+            int price = (int) c.getProduct().getNumber(AppConstants.PARAMS.P_PRICE);
+            long qty = c.getQty();
+            long totalPrice = price * qty;
+            c.setPrice(totalPrice);
+            orderAmount += totalPrice;
+        }
+        return orderAmount;
+    }
+
+    public static String getAppendedString(String s1, String sep, String s2) {
+        if (TextUtils.isEmpty(s1) && TextUtils.isEmpty(s2)) {
+            return "";
+        } else if (!TextUtils.isEmpty(s1) && !TextUtils.isEmpty(s2)) {
+            return s1 + sep + s2;
+        } else if (TextUtils.isEmpty(s1)) {
+            return s2;
+        } else {
+            return s1;
+        }
+    }
 }
+

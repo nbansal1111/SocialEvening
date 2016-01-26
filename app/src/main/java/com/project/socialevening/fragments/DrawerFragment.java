@@ -9,32 +9,20 @@ import com.parse.LogOutCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.project.socialevening.R;
+import com.project.socialevening.activity.BidActivity;
 import com.project.socialevening.activity.HomeActivity;
 import com.project.socialevening.activity.LoginScreen;
-import com.project.socialevening.utility.AppConstants;
 import com.project.socialevening.utility.Preferences;
 import com.project.socialevening.utility.Util;
 
 public class DrawerFragment extends BaseFragment {
 
     HomeActivity act;
-    TextView location;
 
     @Override
     public void initViews() {
-        Util.saveAppLink();
         act = (HomeActivity) getActivity();
-        location = (TextView) findView(R.id.tv_name);
-        setText(R.id.tv_email, ParseUser.getCurrentUser().getEmail() + "");
-        location.setText(ParseUser.getCurrentUser().getUsername());
-        location.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                act.closeDrawer();
-            }
-        });
-        setOnClickListener(R.id.ll_home, R.id.ll_teams, R.id.rl_spread, R.id.ll_log_out);
+        setOnClickListener(R.id.ll_home, R.id.ll_my_orders);
 
     }
 
@@ -43,18 +31,26 @@ public class DrawerFragment extends BaseFragment {
         act.closeDrawer();
         switch (v.getId()) {
             case R.id.ll_home:
-                act.onDrawerItemClicked(AppConstants.FRAGMENT_TYPE.HOME_FRAGMENT);
+                Intent i = new Intent(getActivity(), BidActivity.class);
+                getActivity().startActivityForResult(i, 1);
                 break;
-            case R.id.ll_teams:
-                act.onDrawerItemClicked(AppConstants.FRAGMENT_TYPE.MY_TEAMS);
+            case R.id.ll_my_orders:
+                Preferences.deleteAllData();
+                ParseUser.logOutInBackground(new LogOutCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            Intent login = new Intent(getActivity(), LoginScreen.class);
+                            getActivity().startActivity(login);
+                            getActivity().finish();
+                        } else {
+                            showToast("Unable to log out, please try again");
+                        }
+                    }
+                });
+
                 break;
 
-            case R.id.rl_spread:
-                shareApp();
-                break;
-            case R.id.ll_log_out:
-                logOut();
-                break;
 
             default:
                 break;
@@ -68,8 +64,8 @@ public class DrawerFragment extends BaseFragment {
             public void done(ParseException e) {
                 if (e == null) {
                     Preferences.saveData(Preferences.LOGIN_KEY, false);
-                    getActivity().startActivity(new Intent(act, LoginScreen.class));
-                    getActivity().finish();
+//                    getActivity().startActivity(new Intent(act, LoginScreen.class));
+//                    getActivity().finish();
                 } else {
 
                 }

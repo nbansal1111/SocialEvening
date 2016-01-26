@@ -6,23 +6,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:background="@color/color_discvr_done">
+        android:layout_height="@dimen/navigation_header_height"
+        android:background="@color/white">
 
-        <com.project.socialevening.widgets.CustomFontTextView
-            android:id="@+id/tv_name"
-            style="@style/tv_actionBar_Home"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30dp"
-            android:textSize="26dp" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/cross_over_logo" />
 
-        <com.project.socialevening.widgets.CustomFontTextView
-            android:id="@+id/tv_email"
-            style="@style/tv_actionBar_Home"
-            android:layout_below="@+id/tv_name"
-            android:layout_centerHorizontal="true"
-            android:textSize="20dp" />
     </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_view_bg_grey" />
 
     <ScrollView style="@style/match_match">
 
@@ -41,12 +39,11 @@
 
                 <com.project.socialevening.widgets.CustomFontTextView
                     style="@style/tv_drawer_item"
-
-                    android:text="@string/home" />
+                    android:text="@string/create_auction" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_teams"
+                android:id="@+id/ll_my_orders"
 
                 style="@style/ll_drawer_item">
 
@@ -56,44 +53,8 @@
 
                 <com.project.socialevening.widgets.CustomFontTextView
                     style="@style/tv_drawer_item"
-                    android:text="@string/your_teams" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_log_out"
-
-                style="@style/ll_drawer_item">
-
-                <ImageView
-                    style="@style/iv_drawer_item"
-                    android:src="@drawable/orders_nav" />
-
-                <com.project.socialevening.widgets.CustomFontTextView
-                    style="@style/tv_drawer_item"
                     android:text="@string/log_out" />
             </LinearLayout>
-
-
-            <View
-                style="@style/view_match_1"
-                android:background="@color/bg_gray"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp" />
-
-            <RelativeLayout
-                android:id="@+id/rl_spread"
-                style="@style/rl_drawer_item">
-
-                <com.project.socialevening.widgets.CustomFontTextView
-                    style="@style/tv_drawer_item"
-                    android:text="@string/spread_world" />
-
-                <ImageView
-                    style="@style/iv_drawer_item"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/nav_share" />
-            </RelativeLayout>
 
 
         </LinearLayout>

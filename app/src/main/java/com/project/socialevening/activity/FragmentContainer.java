@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.project.socialevening.R;
-import com.project.socialevening.fragments.AddTeamMateFragment;
 import com.project.socialevening.utility.AppConstants;
 
 /**
@@ -32,8 +31,6 @@ public class FragmentContainer extends BaseActivity {
 
     private Fragment getFragment(int fragmentType) {
         switch (fragmentType) {
-            case AppConstants.FRAGMENT_TYPE.ADD_TEAM_MATE:
-                return AddTeamMateFragment.getInstance(getIntent().getBundleExtra(AppConstants.BUNDLE_KEYS.EXTRA_BUNDLE));
         }
         return null;
     }

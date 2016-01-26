@@ -2,6 +2,8 @@ package com.project.socialevening.fragments;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -25,6 +27,7 @@ import com.project.socialevening.asyncmanager.Service;
 import com.project.socialevening.asyncmanager.ServiceFactory;
 import com.project.socialevening.exceptionhandler.ExceptionHandler;
 import com.project.socialevening.exceptionhandler.RestException;
+import com.project.socialevening.receivers.RefereshReceiver;
 import com.project.socialevening.utility.Logger;
 import com.project.socialevening.utility.Util;
 
@@ -32,7 +35,7 @@ import org.json.JSONException;
 
 public abstract class BaseFragment extends Fragment implements
         View.OnClickListener,
-        TaskFragment.AsyncTaskListener {
+        TaskFragment.AsyncTaskListener, RefereshReceiver.RefreshListner {
 
     View v;
     int layoutId;
@@ -43,6 +46,7 @@ public abstract class BaseFragment extends Fragment implements
     protected ProgressDialog dialog;
     protected String TAG = getClass().getSimpleName();
     protected Toolbar toolbar;
+    protected RefereshReceiver rec;
 
     public String getActionTitle() {
         return null;
@@ -234,6 +238,11 @@ public abstract class BaseFragment extends Fragment implements
 
     }
 
+    @Override
+    public void onReceive(Intent intent) {
+
+    }
+
     public class AsyncManager extends AsyncTask<Object, Object, Object> {
 
         public static final String TAG = "XebiaAsyncManage";
@@ -378,4 +387,23 @@ public abstract class BaseFragment extends Fragment implements
     }
 
 
+    public void registerReceiver() {
+        if (rec == null) {
+            rec = new RefereshReceiver(this);
+        }
+        getActivity().registerReceiver(rec, new IntentFilter(RefereshReceiver.ACTION_REFRESH));
+    }
+
+    public void unregisterReceiver() {
+        if (rec != null) {
+            rec.removeListener(this);
+            getActivity().unregisterReceiver(rec);
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver();
+    }
 }

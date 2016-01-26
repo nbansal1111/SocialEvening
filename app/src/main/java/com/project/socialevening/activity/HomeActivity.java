@@ -1,16 +1,11 @@
 package com.project.socialevening.activity;
 
-import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 
-import com.parse.ParseInstallation;
-import com.parse.ParseUser;
 import com.project.socialevening.R;
 import com.project.socialevening.fragments.BaseFragment;
 import com.project.socialevening.fragments.DrawerFragment;
@@ -28,23 +23,19 @@ public class HomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
-        installation.put("user", ParseUser.getCurrentUser());
-        installation.saveInBackground();
-
+//        ParseInstallation installation = ParseInstallation.getCurrentInstallation();
+//        installation.put("user", ParseUser.getCurrentUser());
+//        installation.saveInBackground();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         getSupportFragmentManager().beginTransaction().replace(R.id.nav_view, new DrawerFragment()).commit();
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_home, new HomeFragment()).commit();
     }
 
 
-
-
     private BaseFragment getFragment(int fragmentType) {
         switch (fragmentType) {
             case AppConstants.FRAGMENT_TYPE.HOME_FRAGMENT:
                 return new HomeFragment();
-
         }
         return null;
     }

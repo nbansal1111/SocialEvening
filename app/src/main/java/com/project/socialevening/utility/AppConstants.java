@@ -1,5 +1,7 @@
 package com.project.socialevening.utility;
 
+import com.parse.ParseObject;
+
 public interface AppConstants {
 
     String API_DOMAIN = "http://128.199.67.239";
@@ -14,8 +16,10 @@ public interface AppConstants {
     String ZONE_ID = "zone_id";
     String CATEGORY_ID = "category_id";
 
-    String PARSE_APP_ID = "t5e3EmTY3TxXVEYa2iDSE4cBtSI4UliMlygphyY2";
-    String PARSE_CLIENT_ID = "FxXZFSlCCW4UmbIUZljxawZbJSDZRScW9hBa29Kw";
+    //    String PARSE_APP_ID = "t5e3EmTY3TxXVEYa2iDSE4cBtSI4UliMlygphyY2";
+    String PARSE_APP_ID = "5NA5U87BJqBKxgv5yi6sNo1aUPvbsAcYEEQJfu0c";
+
+    String PARSE_CLIENT_ID = "lCuNLcU7fW3eIKGPQmwxFnGuQ289w00hJTRtl0xC";
     String PARSE_REST_ID = "sSLcaJLv5gPTvbz73ryCNztPkRgwkxM9Fl8yWGmQ";
     String APP_LINK = "https://drive.google.com/file/d/0B8wKJnD6sONHeXlUbm5pOTk4dGM/view?usp=sharing";
 
@@ -34,9 +38,45 @@ public interface AppConstants {
         String CHALLENGE_COUNT = "challengeCount";
         java.lang.String MEMBER_COUNT = "memberCount";
         String LAT = "latitude";
-        String LNG = "longitude";;
+        String LNG = "longitude";
+        ;
         String LOCATION = "location";
         java.lang.String CHALLENGES_SENT = "challengesSent";
+        String SEATS = "Seats";
+        String P_NAME = "productName";
+        String P_DESC = "productDesc";
+        String P_PRICE = "productPrice";
+        String P_IMAGE = "productImage";
+        String CART = "UserCart";
+        String P_ID = "productId";
+        String P_QTY = "productQuantity";
+        String PRODUCT = "productCart";
+        String CLASS_NAME = "productClassName";
+        String BUSINESS_NAME = "businessName";
+        String MOBILE = "mobile";
+        String ORDER = "userOrder";
+        String ORDER_JSON = "orderJson";
+        String TOTAL_PRICE = "totalPrice";
+        String ITEMS = "items";
+        String ORDER_AMOUNT = "orderAmount";
+        String ORDER_TIME = "orderTime";
+        String MODELS = "Models";
+        String M_IMAGE = "modelImage";
+        String MODEL_NAME = "modelName";
+        String MODEL_CLASS_NAME = "modelClassName";
+        String CART_AMOUNT = "cartAmount";
+        String FIRST_NAME = "firstName";
+        String LAST_NAME = "lastName";
+        String USER_IMAGE = "userImage";
+        String AUCTIONS = "Auctions";
+        String AUCTION_NAME = "auctionName";
+        String AUCTION_TIME = "auctionTime";
+        String AUCTION_DESC = "auctionDesc";
+        String AUCTION_PRICE = "auctionPrice";
+        String AUCTION_BID_COUNT = "auctionBidCount";
+        String BID = "Bids";
+        String AUCTION = "auction";
+        String BID_PRICE = "bidPrice";
     }
 
     public static interface LOADER_CODES {
@@ -88,6 +128,9 @@ public interface AppConstants {
         int SAVE_PARSE_OBJECT = 14;
         int PARSE_QUERY = 15;
         int GET_TEAM_MEMBERS = 16;
+        int USER_CART = 17;
+        int DELETE_CART = 18;
+        int MY_BIDS = 19;
     }
 
     public static interface PREF_KEYS {
@@ -114,6 +157,7 @@ public interface AppConstants {
         String CHALLENGE_COUNT = "challengeCount";
         String APP_LINK = "appLink";
         String IS_APP_LINK_SAVED = "isAppLinkSaved";
+        String IS_PROFILE_FILLED = "isProfileFilled";
     }
 
     public static interface BUNDLE_KEYS {
@@ -141,6 +185,7 @@ public interface AppConstants {
         String CATEGORY_ID = "categoryId";
         java.lang.String TEAM_ID = "teamID";
         String EXTRA_BUNDLE = "bundle";
+        java.lang.String CART_AMOUNT = "cartAmount";
     }
 
     public static interface FRAGMENT_TYPE {
@@ -148,13 +193,18 @@ public interface AppConstants {
         int TEAMS_FRAGMENT = 1;
         int ADD_TEAM_MATE = 2;
         int MY_TEAMS = 3;
+        int MY_ORDERS = 4;
+        int WEB_VIEW = 5;
     }
 
     public static interface VIEW_TYPE {
         int CARD_MY_TEAM = 0;
+        int CARD_AUCTION = 1;
+        int MY_BIDS = 2;
+        int MY_AUCTION = 3;
     }
 
-    public static interface CHALLENGES{
+    public static interface CHALLENGES {
         String FACEBOOK = "Facebook Challenge";
         String INSTAGRAM = "Instagram Challenge";
         String WHATSAPP = "Whatsapp Challenge";

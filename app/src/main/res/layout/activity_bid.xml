@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.project.socialevening.activity.BidActivity">
+
+    <android.support.v7.widget.Toolbar
+        style="@style/toolbar"
+        android:background="@color/color_discvr_red"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin">
+
+            <com.project.socialevening.widgets.CustomFontEditText
+                android:id="@+id/et_bidName"
+                style="@style/et_name_info_screen"
+                android:layout_marginTop="16dp"
+                android:hint="@string/hint_auction_name" />
+
+            <View
+                style="@style/view_sep_info_screen"
+                android:background="@color/apptentive_black" />
+
+            <com.project.socialevening.widgets.CustomFontEditText
+                android:id="@+id/et_auction_desc"
+                style="@style/et_name_info_screen"
+                android:layout_marginTop="16dp"
+                android:hint="@string/hint_auction_desc" />
+
+            <View
+                style="@style/view_sep_info_screen"
+                android:background="@color/apptentive_black" />
+
+            <com.project.socialevening.widgets.CustomFontEditText
+                android:id="@+id/et_auction_min_price"
+                style="@style/et_name_info_screen"
+                android:layout_marginTop="16dp"
+                android:inputType="number"
+                android:hint="@string/hint_auction_min_price" />
+
+            <View
+                style="@style/view_sep_info_screen"
+                android:background="@color/apptentive_black" />
+
+            <include layout="@layout/layout_date_picker" />
+
+            <include layout="@layout/layout_time_picker" />
+
+            <com.project.socialevening.widgets.CustomFontButton
+                android:id="@+id/btn_proceed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@color/color_blue_bg"
+                android:elevation="2dp"
+                android:padding="16dp"
+                android:text="@string/submit"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

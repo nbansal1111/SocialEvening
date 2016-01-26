@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SocialEvening</string>
+    <string name="app_name">Auction System</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -15,6 +15,7 @@
     <string name="home">Home</string>
     <string name="social_evening">Social Evening</string>
     <string name="error_no_selfie">Take a team selfie to proceed</string>
+    <string name="error_no_profile_image">Please add your profile picture to proceed</string>
     <string name="error_no_team_name">Please select a name for your team</string>
     <string name="error_bitmap_retrieval">Unable to fetch image from storage</string>
     <string name="error_uploading_image">Some unknown error occurred while uploading the image, Please try again</string>
@@ -46,5 +47,67 @@
     <string name="internet_error">Please check your internet connection</string>
     <string name="no_team_created">We have not found any team created by you.\nGo ahead and create your team</string>
     <string name="log_out">LOG OUT</string>
+    <string name="item_added_to_cart">Item added to cart successfully</string>
+    <string name="error_adding_item">Error adding item to cart, Please try again.</string>
+    <string name="item_removed_from_cart">Item removed from cart</string>
+    <string name="submit_order">Submit Order</string>
+    <string name="back">Back</string>
+    <string name="hint_business_name">Enter your business/shop name</string>
+    <string name="hint_phone">Enter your 10 digit mobile number</string>
+    <string name="error_invalid_mobile">Please enter a valid 10 digit mobile number</string>
+    <string name="error_no_name">Name can not be empty</string>
+    <string name="info_thanks_placing_order">Thanks for placing the order.\nYour order id is #%s</string>
+    <string name="call_you_shortly">We will call you back shortly for order confirmation</string>
+    <string name="contact_us">Contact us on:</string>
+    <string name="mobile_no">Mobile Number :</string>
+    <string name="watsapp">Whatsapp Number :</string>
+    <string name="email">Email ID :</string>
+    <string name="my_orders">MY ORDERS</string>
+    <string name="dealers">DEALERS DIRECTORY</string>
+    <string name="chat_with_us">CHAT WITH US</string>
+    <string name="no_current_order">Currently you have not placed any order.</string>
 
+
+    <string name="no_auction_found">No Auctions Available</string>
+    <string name="create_an_auction">Create Auction</string>
+
+    <string name="place_an_order">Place an order now</string>
+    <string name="order_id">Order ID : %s</string>
+    <string name="order_amount">Order Amount : %s</string>
+    <string name="order_submitted">Order Submitted : %s</string>
+    <string name="check_out">CHECK OUT</string>
+    <string name="amount_rs">AMOUNT \u20B9 %s</string>
+    <string name="MRP_Rs">MRP \u20B9 %s</string>
+    <string name="add_profile_pic">Attach your profile pic</string>
+    <string name="hint_first_name">Enter your name*</string>
+    <string name="hint_user_name">Enter your first name*</string>
+    <string name="hint_last_name">Enter Your Username</string>
+    <string name="your_profile_info">Your Account Information</string>
+    <string name="error_no_first_name">Please enter your first name</string>
+    <string name="error_unknown">Oops some unknown error occurred</string>
+    <string name="no_product_scanned">Currently no product added to your basket.</string>
+    <string name="add_to_basket">ADD TO BASKET</string>
+    <string name="content">Barcode Content : %s</string>
+    <string name="barcode_qty">Qty  %s</string>
+    <string name="barcode_id">Barcode ID : %s</string>
+    <string name="barcode_name">Barcode Name : %s</string>
+    <string name="my_basket">MY BASKET</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="title_activity_bid">BidActivity</string>
+    <string name="hint_auction_name">Enter Auction Name</string>
+    <string name="hint_auction_desc">Enter few details about auction</string>
+    <string name="hint_auction_min_price">Enter Base Price for this auction</string>
+    <string name="submit">SUBMIT</string>
+    <string name="empty_auction_name">Auction Name can not be empty</string>
+    <string name="empty_auction_desc">Please enter some details about auction</string>
+    <string name="empty_auction_price">Please enter base price for auction</string>
+    <string name="empty_auction_time">Please enter expiry time for auction</string>
+    <string name="invalid_auction_time">Please set expiry time for auction</string>
+    <string name="success_auction_creation">Auction created successfully</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="hint_enter_bid">Enter your bid amount</string>
+    <string name="min_bid_amount">Your bid must be greater than minimum bid price</string>
+    <string name="select_valid_bid_date">Please select an expiry bid date greater than current date</string>
+    <string name="create_auction">CREATE AUCTION</string>
 </resources>

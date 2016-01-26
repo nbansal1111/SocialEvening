@@ -21,6 +21,7 @@ public class Preferences {
     private static final String ADDRESS_LAT = "address_latitude";
     private static final String ADDRESS_LONG = "address_longitude";
     private static final String ADDRESS_LANDMARK = "address_landmark";
+    public static final String USERNAME = "userName";
 
     private static SharedPreferences xebiaSharedPrefs;
     private static SharedPreferences.Editor editor;

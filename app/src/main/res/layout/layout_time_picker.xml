@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_time_view"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_time_view"
+        android:clickable="true"
+        android:padding="1dp">
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:hint="Select Time"
+            android:paddingLeft="10dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/img_time1"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/sep_grey"
+            android:clickable="true"
+            android:padding="0dp"
+            android:src="@drawable/clock96" />
+    </RelativeLayout>
+
+    <com.project.socialevening.widgets.CustomFontTextView
+        android:id="@+id/tv_time_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/error_bg"
+        android:gravity="center"
+        android:padding="16dp"
+        android:textSize="16sp"
+        android:visibility="gone" />
+</LinearLayout>

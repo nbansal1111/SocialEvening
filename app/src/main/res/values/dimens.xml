@@ -10,4 +10,7 @@
     <dimen name="list_item_avatar_size">40dp</dimen>
     <dimen name="rounded_bg_height">70dp</dimen>
     <dimen name="ht_selfie">340dp</dimen>
+    <dimen name="ht_product_image">200dp</dimen>
+    <dimen name="ht_model_image">160dp</dimen>
+    <dimen name="navigation_header_height">160dp</dimen>
 </resources>

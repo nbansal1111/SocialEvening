@@ -22,18 +22,13 @@ package com.project.socialevening.utility;
  */
 
 import android.app.Activity;
-import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.parse.ParsePushBroadcastReceiver;
-import com.project.socialevening.R;
 import com.project.socialevening.activity.HomeActivity;
-import com.project.socialevening.activity.TeamActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,8 +51,8 @@ public class JSONCustomReceiver extends ParsePushBroadcastReceiver {
         Preferences.saveData(AppConstants.PREF_KEYS.CHALLENGE_COUNT, count + 1);
 
         // Add custom intent
-        Intent cIntent = new Intent(context, TeamActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, cIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+//        Intent cIntent = new Intent(context, TeamActivity.class);
+//        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, cIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         // Create custom notification
 //        NotificationCompat.Builder builder = new NotificationCompat.Builder(context)

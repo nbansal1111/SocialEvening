@@ -1,11 +1,12 @@
 package com.project.socialevening;
 
-import android.app.Application;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.util.Base64;
 
+import com.activeandroid.ActiveAndroid;
+import com.activeandroid.app.Application;
 import com.facebook.FacebookSdk;
 import com.parse.Parse;
 import com.parse.ParsePush;
@@ -27,11 +28,9 @@ public class AppController extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        ActiveAndroid.initialize(this);
         Preferences.initSharedPreferences(this);
         Parse.initialize(this, AppConstants.PARSE_APP_ID, AppConstants.PARSE_CLIENT_ID);
-        FacebookSdk.sdkInitialize(this);
-        printKeyHash();
-        Util.saveAppLink();
     }
 
     public static AppController getInstance() {

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_add_new_product"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            style="@style/toolbar"
+            android:background="@color/color_discvr_done"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <FrameLayout
+            android:id="@android:id/empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:visibility="gone">
+
+            <include layout="@layout/layout_no_cart" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/frame_products"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar">
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"
+                android:dividerHeight="4dp"
+                android:padding="8dp" />
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+    <com.project.socialevening.widgets.CustomFontButton
+        android:id="@+id/btn_add_new_product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/color_discvr_done"
+        android:elevation="2dp"
+        android:padding="16dp"
+        android:text="@string/add_to_basket"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+</RelativeLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        style="@style/toolbar"
+        android:background="@color/color_discvr_done"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="32dp"
+                android:orientation="vertical">
+
+                <com.project.socialevening.widgets.CustomFontEditText
+                    android:id="@+id/et_phone"
+                    style="@style/et_name_info_screen"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/hint_phone"
+                    android:maxLength="10" />
+
+                <View style="@style/view_sep_info_screen" />
+
+                <com.project.socialevening.widgets.CustomFontEditText
+                    android:id="@+id/et_name"
+                    style="@style/et_name_info_screen"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/hint_name" />
+
+                <View style="@style/view_sep_info_screen" />
+
+
+                <com.project.socialevening.widgets.CustomFontEditText
+                    android:id="@+id/et_businessName"
+                    style="@style/et_name_info_screen"
+                    android:layout_marginTop="16dp"
+                    android:hint="@string/hint_business_name" />
+
+
+                <View style="@style/view_sep_info_screen" />
+            </LinearLayout>
+
+            <com.project.socialevening.widgets.CustomFontButton
+                android:id="@+id/btn_proceed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/color_discvr_done"
+                android:elevation="2dp"
+                android:padding="16dp"
+                android:text="@string/done"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+
+            <FrameLayout
+                android:id="@+id/frame_noInternet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:fitsSystemWindows="true"
+                android:visibility="gone">
+
+                <include layout="@layout/layout_no_internet" />
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

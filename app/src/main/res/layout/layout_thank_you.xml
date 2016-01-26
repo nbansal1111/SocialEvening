@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        style="@style/toolbar"
+        android:background="@color/color_discvr_red"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp">
+
+            <com.project.socialevening.widgets.CustomFontTextView
+                android:id="@+id/tv_info_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="30dp"
+                android:gravity="center"
+                android:text="@string/info_thanks_placing_order"
+                android:textColor="@color/color_text_grey"
+                android:textSize="22dp"
+                app:customFont="@string/font_regular" />
+
+            <com.project.socialevening.widgets.CustomFontTextView
+                android:id="@+id/tv_info_2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/call_you_shortly"
+                android:textColor="@color/color_text_grey"
+                android:textSize="16dp"
+                app:customFont="@string/font_medium" />
+
+
+            <com.project.socialevening.widgets.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+
+                android:text="@string/contact_us"
+                android:textSize="20dp" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@drawable/line" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <com.project.socialevening.widgets.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/mobile_no"
+                    android:textSize="16dp" />
+
+                <com.project.socialevening.widgets.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:autoLink="all"
+                    android:text="+91-96548-54895"
+                    android:textColor="@color/color_discvr_done"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <com.project.socialevening.widgets.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/watsapp"
+                    android:textSize="16dp" />
+
+                <com.project.socialevening.widgets.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:autoLink="all"
+                    android:text="+91-94162-26252"
+                    android:textColor="@color/color_discvr_done"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+
+                <com.project.socialevening.widgets.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/email"
+                    android:textSize="16dp" />
+
+                <com.project.socialevening.widgets.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:autoLink="all"
+                    android:text="sachinbansal240611@gmail.com"
+                    android:textColor="@color/color_discvr_done"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+
+            <com.project.socialevening.widgets.CustomFontButton
+                android:id="@+id/btn_proceed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="40dp"
+                android:background="@color/color_discvr_done"
+                android:elevation="2dp"
+                android:padding="16dp"
+                android:text="@string/done"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

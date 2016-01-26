@@ -17,9 +17,10 @@ public class ServiceFactory {
                 service = new SaveParseObject();
                 break;
             case AppConstants.TASK_CODES.PARSE_QUERY:
-            case AppConstants.TASK_CODES.GET_TEAM_MEMBERS:
+            case AppConstants.TASK_CODES.MY_BIDS:
                 service = new ParseQueryService();
                 break;
+
 
             default:
                 service = new HttpRestService();

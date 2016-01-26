@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_productName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/tv_productPrice"
+            android:text="Single Piece seat"
+            android:textColor="@color/color_text_grey"
+            android:textSize="16dp" />
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_productDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_productName"
+            android:layout_marginTop="5dp"
+            android:layout_toLeftOf="@+id/tv_productPrice"
+            android:text="9 size"
+            android:textColor="@color/color_text_desc"
+            android:textSize="14dp" />
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_productPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Rs. 2300"
+            android:textColor="@color/color_discvr_done"
+            android:textSize="14dp" />
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_productQty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tv_productPrice"
+            android:layout_marginTop="5dp"
+            android:text="1"
+            android:textColor="@color/color_text_desc"
+            android:textSize="18dp" />
+
+    </RelativeLayout>
+
+    <View
+        style="@style/view_match_1"
+        android:layout_marginBottom="8dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_plus"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/rect_bg_selfie"
+            android:gravity="center"
+            android:text="+"
+            android:textSize="18dp" />
+
+        <com.project.socialevening.widgets.CustomFontEditText
+            android:id="@+id/et_qty"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/rect_bg_selfie"
+            android:gravity="center"
+            android:inputType="number"
+            android:textSize="18dp" />
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_minus"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/rect_bg_selfie"
+            android:gravity="center"
+            android:text="-"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+
+</LinearLayout>

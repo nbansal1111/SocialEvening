@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp">
+
+        <ImageView
+            android:id="@+id/iv_auction"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/bg_time_view"
+            android:padding="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/auction_icon" />
+
+        <RelativeLayout
+            android:id="@+id/rl_auction_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/iv_auction">
+
+            <com.project.socialevening.widgets.CustomFontTextView
+                android:id="@+id/tv_auction_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Auction Name"
+                android:textSize="16dp"
+                app:customFont="@string/font_regular" />
+
+            <com.project.socialevening.widgets.CustomFontTextView
+                android:id="@+id/tv_auction_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_auction_name"
+                android:text="Auction Name"
+                android:textColor="@color/color_text_desc"
+                android:textSize="12dp"
+                app:customFont="@string/font_regular" />
+
+            <com.project.socialevening.widgets.CustomFontTextView
+                android:id="@+id/tv_auction_time"
+                style="@style/tv_auction_info_subtitle"
+                android:layout_below="@+id/tv_auction_desc"
+                android:layout_marginTop="8dp"
+                android:gravity="left"
+                android:text="Closing in 10 hours"
+                app:customFont="@string/font_regular" />
+
+        </RelativeLayout>
+
+        <com.project.socialevening.widgets.CustomFontEditText
+            android:id="@+id/et_bid_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_auction_info"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/bg_time_view"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:hint="@string/hint_enter_bid"
+            android:textSize="14dp"
+            android:inputType="number"
+            android:padding="8dp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

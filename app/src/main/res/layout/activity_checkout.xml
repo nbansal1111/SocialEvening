@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <android.support.v7.widget.Toolbar
+        style="@style/toolbar"
+        android:background="@color/color_primary_dark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_cart_footer"
+        android:layout_below="@+id/toolbar"
+        android:paddingBottom="6dp"></ListView>
+
+    <RelativeLayout
+        android:id="@+id/ll_cart_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/view_sep_1"
+            style="@style/view_match_1"></View>
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_totalAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="8dp"
+            android:singleLine="true"
+            android:text="Rs. 6000"
+            android:textColor="@color/color_green_bg"
+            android:textSize="20dp"
+            app:customFont="@string/font_medium" />
+
+        <com.project.socialevening.widgets.CustomFontTextView
+            android:id="@+id/tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/tv_totalAmount"
+            android:padding="8dp"
+            android:layout_marginTop="5dp"
+            android:singleLine="true"
+            android:text="Total Order Amount:"
+            android:textColor="@color/color_text_desc"
+            app:customFont="@string/font_medium" />
+
+        <LinearLayout
+            android:id="@+id/ll_invite_footer"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+
+            android:layout_below="@+id/tv_totalAmount"
+            android:orientation="horizontal">
+
+            <com.project.socialevening.widgets.CustomFontButton
+                android:id="@+id/btn_skip"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/color_skip_inv_bg"
+                android:gravity="center"
+                android:text="@string/back"
+                android:textAllCaps="true"
+                android:textColor="@color/color_purple_bg" />
+
+            <com.project.socialevening.widgets.CustomFontButton
+                android:id="@+id/btn_send_invite"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@color/color_purple_bg"
+                android:gravity="center"
+                android:text="@string/submit_order"
+                android:textAllCaps="true"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

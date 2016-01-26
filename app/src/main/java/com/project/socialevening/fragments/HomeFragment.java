@@ -1,6 +1,7 @@
 package com.project.socialevening.fragments;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -8,9 +9,10 @@ import android.view.View;
 
 import com.project.socialevening.ListAdapters.CustomPagerAdapter;
 import com.project.socialevening.R;
-import com.project.socialevening.activity.CreateTeamActivity;
-import com.project.socialevening.activity.FragmentContainer;
-import com.project.socialevening.utility.AppConstants;
+import com.project.socialevening.activity.BidActivity;
+import com.project.socialevening.fragments.auctions.LiveAuctions;
+import com.project.socialevening.fragments.auctions.MyAuctions;
+import com.project.socialevening.fragments.auctions.MyBids;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +25,19 @@ public class HomeFragment extends BaseFragment implements CustomPagerAdapter.Pag
     private TabLayout tabLayout;
     private List<String> tabNames = new ArrayList<>();
     private CustomPagerAdapter<String> adapter;
+    private LiveAuctions liveAuctions;
+    private MyBids myBids;
+    private MyAuctions myAuctions;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        registerReceiver();
+    }
 
     @Override
     public void initViews() {
-        initToolBar(getString(R.string.social_evening));
+        initToolBar(getString(R.string.app_name));
         pager = (ViewPager) findView(R.id.viewpager);
         tabLayout = (TabLayout) findView(R.id.tabs);
         initTabNames();
@@ -43,15 +54,16 @@ public class HomeFragment extends BaseFragment implements CustomPagerAdapter.Pag
         super.onClick(v);
         switch (v.getId()) {
             case R.id.fab:
-                startActivity(new Intent(getActivity(), CreateTeamActivity.class));
+                Intent i = new Intent(getActivity(), BidActivity.class);
+                startActivity(i);
                 break;
         }
     }
 
     private void initTabNames() {
-        tabNames.add("Around you");
-        tabNames.add("Challenges");
-        tabNames.add("Rewards");
+        tabNames.add("Auctions");
+        tabNames.add("My Bids");
+        tabNames.add("My Auctions");
     }
 
     private void setAdapter() {
@@ -67,11 +79,20 @@ public class HomeFragment extends BaseFragment implements CustomPagerAdapter.Pag
     public Fragment getFragmentItem(int position, String listItem) {
         switch (position) {
             case 0:
-                return new TeamNearBy();
+                if (liveAuctions == null) {
+                    liveAuctions = new LiveAuctions();
+                }
+                return liveAuctions;
             case 1:
-                return new ChallengeHomeFragment();
+                if (myBids == null) {
+                    myBids = new MyBids();
+                }
+                return myBids;
             case 2:
-                return new RewardsFragment();
+                if (myAuctions == null) {
+                    myAuctions = new MyAuctions();
+                }
+                return myAuctions;
         }
         return null;
     }
@@ -99,5 +120,13 @@ public class HomeFragment extends BaseFragment implements CustomPagerAdapter.Pag
     @Override
     public void onTabReselected(TabLayout.Tab tab) {
 
+    }
+
+    @Override
+    public void onReceive(Intent intent) {
+        super.onReceive(intent);
+        liveAuctions.onRefresh();
+        myAuctions.onRefresh();
+        myBids.onRefresh();
     }
 }
